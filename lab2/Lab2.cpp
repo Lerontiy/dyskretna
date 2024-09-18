@@ -1,33 +1,36 @@
 #include <iostream>
 #include "Sort.h"
 #include <windows.h>
+
 using namespace std;
 
 int main() {
-    mytype array[] = {9, 0, 4, 5, 3, 8};
-    mytype array1[] = {9, 0, 4, 5, 3, 8};
-    mytype array2[] = {9, 0, 4, 5, 3, 8};
-    int size = sizeof(array) / sizeof(array[0]);
+    mytype items[] = {9, 0, 4, 5, 3, 8};
+    int size = sizeof(items) / sizeof(items[0]);
+
+    int start = 0;
+    int end = size;
+
+    MyArray<mytype> array(items, size, start, end);    
+    MyArray<mytype> array1(items, size, start, end);    
+    MyArray<mytype> array2(items, size, start, end);    
 
     SetConsoleOutputCP(CP_UTF8); // вивід до консолі укріїнських літер
 
     cout << "невідсортований список: ";
-    show(array, size);
+    array.show();
 
-    //for (int i=size-1; i>=0; i--){array[i] = size-1-i;}
-    SortBubble(array, size);
+    array.SortBubble(start, end);
     cout << "сортування бульбашкою: ";
-    show(array, size);
+    array.show();
 
-    //for (int i=size-1; i>=0; i--){array[i] = size-1-i;}
-    SortSelection(array1, size);
+    array1.SortSelection(start, end);
     cout << "сортування вибором: ";
-    show(array1, size);
+    array1.show();
 
-    //for (int i=size-1; i>=0; i--){array[i] = size-1-i;}
-    SortInsertion(array2, size);
+    array2.SortInsertion(start, end);
     cout << "сортування вставкою: ";
-    show(array2, size);
+    array2.show();
 
     return 0;
 }

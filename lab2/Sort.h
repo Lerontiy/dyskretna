@@ -1,7 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
 typedef int mytype;
 
-void show(mytype* array, int size);
-void swap(mytype* array, int size);
-void SortBubble(mytype* array, int size);
-void SortSelection(mytype* array, int size);
-void SortInsertion(mytype* array, int size);
+template <typename mytype>
+class MyArray {
+    private:
+        mytype* elements;
+        int size;
+
+        void swap(mytype* a, mytype* b);
+        int MinItem(int start, int end, int& iterations);
+        int MaxItem(int start, int end, int& iterations);
+    public:
+        MyArray(const mytype* elems, int n1, int n2, int n3);
+        int start;
+        int end;
+
+        void show();
+        void SortBubble(int start, int end);
+        void SortSelection(int start, int end);
+        void SortInsertion(int start, int end);
+};
+
+#include "Sort.cpp"

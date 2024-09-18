@@ -1,31 +1,41 @@
-#include "Sort.h"
 #include <iostream>
+
 using namespace std;
 
-void show(mytype* array, int size){
+template <typename mytype>
+void MyArray<mytype>::swap(mytype* a, mytype* b){
+    mytype temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+template <typename mytype>
+MyArray<mytype>::MyArray(const mytype* elems, int n1, int n2, int n3) : size(n1), start(n2), end(n3) {
+    elements = new mytype[size];
+    for (int i = 0; i < size; i++) {
+        elements[i] = elems[i];
+    }
+}
+
+template <typename mytype>
+void MyArray<mytype>::show(){
     for (int i=0; i<size; i++){
-        cout << array[i] << " ";
+        cout << elements[i] << " ";
     }
     cout << endl;
 }
 
-void swap(mytype* a, mytype* b){
-    mytype temp = *a;
-    *a = *b;
-    *b = temp;
-
-}
-
-void SortBubble(mytype* array, int size){
+template <typename mytype>
+void MyArray<mytype>::SortBubble(int start, int end){
     int sorted_size = 0;
     bool praporec;
     int iterations = 0;
 
-    while (sorted_size<size) {
+    while (sorted_size<end) {
         praporec = true;
-        for (int i=1; i<size-sorted_size; i++) {
-            if (array[i-1] > array[i]) {
-                swap(&array[i-1], &array[i]);
+        for (int i=start+1; i<end-sorted_size; i++) {
+            if (elements[i-1] > elements[i]) {
+                swap(&elements[i-1], &elements[i]);
                 praporec = false;
             }
             iterations++;
@@ -37,40 +47,61 @@ void SortBubble(mytype* array, int size){
     }
 
     cout << "ітерацій: " << iterations << " ";
-
 }
-void SortSelection(mytype* array, int size){
-    int start = 0;
+
+template <typename mytype>
+int MyArray<mytype>::MaxItem(int start, int end, int& iterations){
+    int max = start;
+    for (int i=start; i<end; i++){
+        if (elements[i] > elements[max]) {
+            max = i;
+        }
+        iterations++;
+    }
+    return max;
+}
+
+template <typename mytype>
+int MyArray<mytype>::MinItem(int start, int end, int& iterations){
+    int min = start;
+    for (int i=start; i<end; i++){   
+        if (elements[i] < elements[min]) {
+            min = i;
+        }
+        iterations++;
+    }
+    return min;
+}
+
+template <typename mytype>
+void MyArray<mytype>::SortSelection(int start, int end){
+    int start_sort = start;
     int min;
     int iterations = 0;
 
-    while (start < size) {
-        min = start;
-        for (int i=start; i<size; i++){
-            if (array[i] < array[min]) {
-                min = i;
-            }
-            iterations++;
-        }
-        swap(&array[start], &array[min]);
-        start++;
+    while (start_sort < end) {
+        min = MinItem(start_sort, end, iterations);
+        swap(&elements[start_sort], &elements[min]);
+        start_sort++;
     } 
 
     cout << "ітерацій: " << iterations << " ";    
 }
 
-void SortInsertion(mytype* array, int size){
+template <typename mytype>
+void MyArray<mytype>::SortInsertion(int start, int end){
     int iterations = 0;
     int sorted_size = 1;
     int temp_i = 0;
 
-    for (int i = 1; i<size; i++) {
+    for (int i = start+1; i<end; i++) {
         temp_i = i;
-        for (int temp_i = i; temp_i>0 && array[temp_i-1] > array[temp_i]; temp_i--){
-            swap(&array[temp_i], &array[temp_i-1]);
+        for (int temp_i = i; temp_i>0 && elements[temp_i-1] > elements[temp_i]; temp_i--){
+            swap(&elements[temp_i], &elements[temp_i-1]);
             iterations++;
         }
     }
 
     cout << "ітерацій: " << iterations << " ";    
 }
+
