@@ -1,2 +1,2 @@
-prompt $g && del Lab_1.exe && g++ -c LogCon.cpp && g++ -c Lab_1.cpp && g++ LogCon.o Lab_1.o -o Lab_1 && del LogCon.o && del Lab_1.o && cls && Lab_1.exe 
+prompt $g && del Lab2.exe && g++ -c Sort.cpp && g++ -c Lab2.cpp && g++ Sort.o Lab2.o -o Lab2 && del Sort.o && del Lab2.o && cls && Lab2.exe 
 pause
