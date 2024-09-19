@@ -6,6 +6,7 @@ using namespace std;
 
 int main(){
     SetConsoleOutputCP(CP_UTF8);
+
     logic_operators_variant();
     variant5();
     variant8();

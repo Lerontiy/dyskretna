@@ -1,5 +1,7 @@
 #include "LogCon.h"
 #include <functional>
+#include <locale>
+#include <codecvt>
 
 bool Not(bool a){ // return !a
     if (a){
@@ -67,15 +69,13 @@ void variant5() {
     auto eight = [](bool a, bool b, bool c) {return Xnor(Or(And(a, b), c), And(c, Not(a)));};
     function<bool(bool a, bool b, bool c)> funcs[] = {one, two, three, four, five, six, seven, eight};
     
-    string header[] = {"a", "b", "c", "a∧b", "(a∧b)∨c", "¬a", "c∧¬a", "((a∧b)∨c)~(c∧¬a)"};
-    
-    int spaces[] = {1, 1, 1, 3, 7, 2, 4, 16};
+    wstring header[] = {L"a", L"b", L"c", L"a∧b", L"(a∧b)∨c", L"¬a", L"c∧¬a", L"((a∧b)∨c)~(c∧¬a)"};
 
     string var_num = "5";
 
-    int sizeofheader = sizeof(header)/24;
+    int sizeofheader = sizeof(header) / sizeof(header[0]);
 
-    solve_variant(header, sizeofheader, spaces, funcs, var_num);
+    solve_variant(header, sizeofheader, funcs, var_num);
 }
 
 void variant8() {
@@ -92,15 +92,13 @@ void variant8() {
     auto eleven = [](bool a, bool b, bool c) {return Xnor(Or(a, Or(c, Not(a))), Xor(And(Not(b), a), Or(Not(b), c)));};
     function<bool(bool a, bool b, bool c)> funcs[] = {one, two, three, four, five, six, seven, eight, nine, ten, eleven};
     
-    string header[] = {"a", "b", "c", "¬a", "c∨¬a", "a∨(c∨¬a)", "¬b", "¬b∧a", "¬b∨c", "¬b∧a⊕¬b∨c", "(a∨(c∨¬a))~((¬b∧a)⊕(¬b∨c))"};
-    
-    int spaces[] = {1, 1, 1, 2, 4, 8, 2, 4, 4, 9, 26};
+    wstring header[] = {L"a", L"b", L"c", L"¬a", L"c∨¬a", L"a∨(c∨¬a)", L"¬b", L"¬b∧a", L"¬b∨c", L"¬b∧a⊕¬b∨c", L"(a∨(c∨¬a))~((¬b∧a)⊕(¬b∨c))"};
 
     string var_num = "8";
 
-    int sizeofheader = sizeof(header)/24;
+    int sizeofheader = sizeof(header) / sizeof(header[0]);
 
-    solve_variant(header, sizeofheader, spaces, funcs, var_num);
+    solve_variant(header, sizeofheader, funcs, var_num);
 }
 
 void variant10() {
@@ -117,15 +115,13 @@ void variant10() {
     auto eleven = [](bool a, bool b, bool c) {return Xnor(If(And(b, c), Or(a, c)), If(And(b, Not(c)),  And(c, a)));};
     function<bool(bool a, bool b, bool c)> funcs[] = {one, two, three, four, five, six, seven, eight, nine, ten, eleven};
     
-    string header[] = {"a", "b", "c", "¬c", "b∧c", "a∨c", "(b∧c)→(a∨c)", "b∧¬c", "c∧a", "(b∧¬c)→(c∧a)", "((b∧c)→(a∨c))~((b∧¬c)→(c∧a))"};
-
-    int spaces[] = {1, 1, 1, 2, 3, 3, 11, 4, 3, 12, 28};
+    wstring header[] = {L"a", L"b", L"c", L"¬c", L"b∧c", L"a∨c", L"(b∧c)→(a∨c)", L"b∧¬c", L"c∧a", L"(b∧¬c)→(c∧a)", L"((b∧c)→(a∨c))~((b∧¬c)→(c∧a))"};
 
     string var_num = "10";
 
-    int sizeofheader = sizeof(header)/24;
+    int sizeofheader = sizeof(header) / sizeof(header[0]);
 
-    solve_variant(header, sizeofheader, spaces, funcs, var_num);
+    solve_variant(header, sizeofheader, funcs, var_num);
 }
 
 void additional_variant() { // (a→b)v(⌐c→(⌐a⊕⌐b))
@@ -141,15 +137,13 @@ void additional_variant() { // (a→b)v(⌐c→(⌐a⊕⌐b))
     auto ten = [](bool a, bool b, bool c) {return Or(If(a, b), If(Not(c), Xor(Not(a), Not(b))));};
     function<bool(bool a, bool b, bool c)> funcs[] = {one, two, three, four, five, six, seven, eight, nine, ten};
     
-    string header[] = {"a", "b", "c", "a→b", "⌐a", "⌐b", "⌐c", "⌐a⊕⌐b", "⌐c→(⌐a⊕⌐b)", "(a→b)v(⌐c→(⌐a⊕⌐b))"};
+    wstring header[] = {L"a", L"b", L"c", L"a→b", L"⌐a", L"⌐b", L"⌐c", L"⌐a⊕⌐b", L"⌐c→(⌐a⊕⌐b)", L"(a→b)v(⌐c→(⌐a⊕⌐b))"};
 
-    int spaces[] = {1, 1, 1, 3, 2, 2, 2, 5, 10, 18};
+    string var_num = "Лаболаторний";
 
-    string var_num = "0";
+    int sizeofheader = sizeof(header) / sizeof(header[0]);
 
-    int sizeofheader = sizeof(header)/24;
-
-    solve_variant(header, sizeofheader, spaces, funcs, var_num);
+    solve_variant(header, sizeofheader, funcs, var_num);
 }
 
 void logic_operators_variant() { // (a→b)v(⌐c→(⌐a⊕⌐b))
@@ -163,27 +157,34 @@ void logic_operators_variant() { // (a→b)v(⌐c→(⌐a⊕⌐b))
     auto eight = [](bool a, bool b, bool c) {return Xor(a, b);};
     function<bool(bool a, bool b, bool c)> funcs[] = {one, two, three, four, five, six, seven, eight};
     
-    string header[] = {"a", "b", "⌐a", "a∧b", "avb", "a→b", "a~b", "a⊕b"};
-
-    int spaces[] = {1, 1, 2, 3, 3, 3, 3, 3};
+    wstring header[] = {L"a", L"b", L"⌐a", L"a∧b", L"avb", L"a→b", L"a~b", L"a⊕b"};
+    int sizeofheader = sizeof(header) / sizeof(header[0]);
 
     string var_num = "Логічні Операції";
 
-    int sizeofheader = sizeof(header)/24;
-
-    solve_variant(header, sizeofheader, spaces, funcs, var_num);
+    solve_variant(header, sizeofheader, funcs, var_num);
 }
     
-void solve_variant(string header[], int sizeofheader, int spaces[], function<bool(bool a, bool b, bool c)> funcs[], string var_num) {
+void solve_variant(wstring* header, int sizeofheader, function<bool(bool a, bool b, bool c)> funcs[], string var_num) {
+
     bool elements[] = {true, false};
 
-    cout << " " << "Варіант " << var_num << "\n";
+    int spaces[sizeofheader];
+
+    wstring_convert<codecvt_utf8<wchar_t>> converter;
+
+    for (int i=0; i<sizeofheader; i++){
+        spaces[i] = header[i].length();
+    }
+
+    cout << " " << "Варіант " << var_num << endl;
 
     cout << " | ";
     for (int i=0; i<sizeofheader; i++) {
-        cout<< header[i] << " | ";
+        string utf8_string = converter.to_bytes(header[i]);
+        cout << utf8_string << " | ";
     }
-    cout << "\n";
+    cout << endl;
     
     //sort(elements.begin(), elements.end());
     for (bool c : elements) {

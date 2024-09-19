@@ -12,25 +12,37 @@ int main() {
     int end = size;
 
     MyArray<mytype> array(items, size, start, end);    
-    MyArray<mytype> array1(items, size, start, end);    
-    MyArray<mytype> array2(items, size, start, end);    
+    //MyArray<mytype> array1(items, size, start, end);    
+    //MyArray<mytype> array2(items, size, start, end);    
 
-    SetConsoleOutputCP(CP_UTF8); // вивід до консолі укріїнських літер
-
+    SetConsoleOutputCP(CP_UTF8); // вивід до консолі українських літер
+    
     cout << "невідсортований список: ";
     array.show();
 
-    array.SortBubble(start, end);
-    cout << "сортування бульбашкою: ";
-    array.show();
+    int type;
+    cout << "Оберіть спосіб сортування (1-бульбашка 2-вибір 3-вставка): ";
+    cin >> type;
 
-    array1.SortSelection(start, end);
-    cout << "сортування вибором: ";
-    array1.show();
-
-    array2.SortInsertion(start, end);
-    cout << "сортування вставкою: ";
-    array2.show();
+    switch (type){
+        case 1:
+            array.SortBubble(start, end);
+            cout << "сортування бульбашкою: ";
+            array.show();
+            break;
+        case 2:
+            array.SortSelection(start, end);
+            cout << "сортування вибором: ";
+            array.show();
+            break;
+        case 3:
+            array.SortInsertion(start, end);
+            cout << "сортування вставкою: ";
+            array.show();
+            break;
+        default:
+            cout << "невідомий спосіб" << endl;
+    }
 
     return 0;
 }
