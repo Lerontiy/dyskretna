@@ -1,25 +1,50 @@
 #include <iostream>
 #include "Sort.h"
 #include <windows.h>
+#include <cstdlib>
 
 using namespace std;
 
 int main() {
-    mytype items[] = {9, 0, 4, 5, 3, 8};
+    const int SIZE = 2000;
+    mytype items[SIZE] = {};  
+
+    
+    for (int i = SIZE; i >= 0; i--) {
+        items[i] = rand();
+    }
+
+    //mytype items[] = {9, 0, 4, 5, 3, 8};
     int size = sizeof(items) / sizeof(items[0]);
 
     int start = 0;
     int end = size;
 
-    MyArray<mytype> array(items, size, start, end);    
-    //MyArray<mytype> array1(items, size, start, end);    
-    //MyArray<mytype> array2(items, size, start, end);    
+    MyArray array(items, size, start, end);    
+    MyArray array1(items, size, start, end);    
+    MyArray array2(items, size, start, end);    
 
     SetConsoleOutputCP(CP_UTF8); // вивід до консолі українських літер
     
-    cout << "невідсортований список: ";
-    array.show();
+    //cout << "невідсортований список: ";
+    //array.show();
 
+    array.SortBubble(start, end);
+    cout << "сортування бульбашкою: ";
+    cout << endl;
+    //array.show();
+
+    array1.SortSelection(start, end);
+    cout << "сортування вибором: ";
+    cout << endl;
+    //array1.show();
+
+    array2.SortInsertion(start, end);
+    cout << "сортування вставкою: ";
+    cout << endl;
+    //array2.show();
+
+    /*
     int type;
     cout << "Оберіть спосіб сортування (1-бульбашка 2-вибір 3-вставка): ";
     cin >> type;
@@ -43,6 +68,7 @@ int main() {
         default:
             cout << "невідомий спосіб" << endl;
     }
+    */
 
     return 0;
 }

@@ -4,3 +4,4 @@ venv/
 *.exe
 *.gitignore
 .vscode/
+*.docx
