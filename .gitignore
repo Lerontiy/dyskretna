@@ -1,9 +1,0 @@
-*.exe
-*.o
-*.pdf
-*.docx
-
-__pycache__/
-.pytest_cache/
-venv/
-.vscode/
