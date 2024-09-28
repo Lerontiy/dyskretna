@@ -6,23 +6,21 @@
 using namespace std;
 
 int main() {
-    const int SIZE = 2000;
-    mytype items[SIZE] = {};  
+    const int size = 6;
+    mytype items[size] = {};  
 
-    
-    for (int i = SIZE; i >= 0; i--) {
+    for (int i = size; i >= 0; i--) {
         items[i] = rand();
     }
 
     //mytype items[] = {9, 0, 4, 5, 3, 8};
-    int size = sizeof(items) / sizeof(items[0]);
-
+    
     int start = 0;
     int end = size;
 
-    MyArray array(items, size, start, end);    
-    MyArray array1(items, size, start, end);    
-    MyArray array2(items, size, start, end);    
+    MyArray array(items, size);    
+    MyArray array1(items, size);    
+    MyArray array2(items, size);    
 
     SetConsoleOutputCP(CP_UTF8); // вивід до консолі українських літер
     

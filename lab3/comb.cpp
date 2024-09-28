@@ -1,6 +1,5 @@
-#include <iostream>
 #include <cmath>
-#include "sort.h"
+#include "../lab2/Sort.h"
 
 using namespace std;
 
@@ -30,6 +29,14 @@ int _C(int k, int n){
     return C(k, n+k-1);
 }
 
-int GenPerm(int[] A, int n){
-
+void GenPerm(MyArray A, mytype n){
+    for (int i=A.size; i>=0; i--) {
+        if (A.elements[i-1] != n-A.size+i) {
+            A.elements[i-1]++;
+            for (int ii=i; ii<=A.size; ii++) {
+                A.elements[ii] = A.elements[ii-1] + 1;
+            }
+            break;
+        }
+    }
 }

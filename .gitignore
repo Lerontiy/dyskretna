@@ -2,6 +2,6 @@ __pycache__/
 .pytest_cache/
 venv/
 *.exe
-*.gitignore
+.gitignore
 .vscode/
-*.docx
+*.o

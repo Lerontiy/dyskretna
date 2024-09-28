@@ -10,15 +10,18 @@ typedef int mytype;
 
 //template <typename mytype>
 class MyArray {
-    public:
-        MyArray(mytype* elems, int n1);
+    private:
         mytype* elements;
         int size;
-
-        void show();
-        void swap(int i1, int i2);
+        void swap(mytype* a, mytype* b);
         int MinItem(int start, int end, int& iterations);
         int MaxItem(int start, int end, int& iterations);
+    public:
+        MyArray(const mytype* elems, int n1, int n2, int n3);
+        int start;
+        int end;
+
+        void show();
         void SortBubble(int start, int end);
         void SortSelection(int start, int end);
         void SortInsertion(int start, int end);
