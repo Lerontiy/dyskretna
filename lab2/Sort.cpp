@@ -45,7 +45,7 @@ void MyArray::SortBubble(int start, int end){
         sorted_size++;
     }
 
-    cout << "ітерацій: " << iterations << " ";
+    //cout << "ітерацій: " << iterations << " ";
 }
 
 int MyArray::MaxItem(int start, int end, int& iterations){
@@ -81,23 +81,20 @@ void MyArray::SortSelection(int start, int end){
         start_sort++;
     } 
 
-    cout << "ітерацій: " << iterations << " ";    
+    //cout << "ітерацій: " << iterations << " ";    
 }
 
 void MyArray::SortInsertion(int start, int end){
     int iterations = 0;
-    int sorted_size = 1;
-    int temp_i = 0;
 
     for (int i = start+1; i<end; i++) {
-        temp_i = i;
         iterations++;
-        for (int temp_i = i; temp_i>0 && (elements[temp_i-1] > elements[temp_i]); temp_i--){
-            swap(temp_i, temp_i-1);
+        for (int ii = i; (ii>start) && (elements[ii-1] > elements[ii]); ii--){
+            swap(ii, ii-1);
             iterations++;
         }
     }
 
-    cout << "ітерацій: " << iterations << " ";    
+    //cout << "ітерацій: " << iterations << " ";    
 }
 

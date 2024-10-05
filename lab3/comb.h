@@ -10,4 +10,6 @@ int C(int k, int n);
 
 int _C(int k, int n);
 
-void GenPerm(MyArray A, mytype n);
+void GenPerm(MyArray A, int k, int n);
+
+void GenComb(MyArray A, int n);

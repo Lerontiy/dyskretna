@@ -1,21 +1,21 @@
 #include <iostream>
 #include "Sort.h"
 #include <windows.h>
-#include <cstdlib>
+//#include <cstdlib>
 
 using namespace std;
 
 int main() {
     const int size = 6;
-    mytype items[size] = {};  
 
-    for (int i = size; i >= 0; i--) {
-        items[i] = rand();
-    }
+    //mytype items[size] = {};  
+    //for (int i = size; i >= 0; i--) {
+    //    items[i] = rand();
+    //}
 
-    //mytype items[] = {9, 0, 4, 5, 3, 8};
+    mytype items[] = {6, 5, 4, 3, 2, 1};
     
-    int start = 0;
+    int start = 1;
     int end = size;
 
     MyArray array(items, size);    
@@ -24,23 +24,23 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8); // вивід до консолі українських літер
     
-    //cout << "невідсортований список: ";
-    //array.show();
+    cout << "невідсортований список: ";
+    array.show();
 
     array.SortBubble(start, end);
     cout << "сортування бульбашкою: ";
     cout << endl;
-    //array.show();
+    array.show();
 
     array1.SortSelection(start, end);
     cout << "сортування вибором: ";
     cout << endl;
-    //array1.show();
+    array1.show();
 
     array2.SortInsertion(start, end);
     cout << "сортування вставкою: ";
     cout << endl;
-    //array2.show();
+    array2.show();
 
     /*
     int type;
