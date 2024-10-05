@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Sort.h"
+#include "../lab1/LogCon.h"
 
 using namespace std;
 
@@ -84,17 +85,20 @@ void MyArray::SortSelection(int start, int end){
     //cout << "ітерацій: " << iterations << " ";    
 }
 
-void MyArray::SortInsertion(int start, int end){
+void MyArray::SortInsertion(int start, int end, bool reverse){
     int iterations = 0;
+    bool h;
 
     for (int i = start+1; i<end; i++) {
         iterations++;
-        for (int ii = i; (ii>start) && (elements[ii-1] > elements[ii]); ii--){
-            swap(ii, ii-1);
-            iterations++;
+
+        for (int ii = i; (ii>start); ii--){
+            if (Xor(elements[ii-1] > elements[ii], reverse)){
+                swap(ii, ii-1);
+                iterations++;
+            }
         }
     }
 
     //cout << "ітерацій: " << iterations << " ";    
 }
-

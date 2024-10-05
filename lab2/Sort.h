@@ -21,7 +21,7 @@ class MyArray {
         int MaxItem(int start, int end, int& iterations);
         void SortBubble(int start, int end);
         void SortSelection(int start, int end);
-        void SortInsertion(int start, int end);
+        void SortInsertion(int start, int end, bool reverse);
 };
 
 #endif

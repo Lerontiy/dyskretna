@@ -12,17 +12,17 @@ void lab_3_1(int k, int n) {
     cout << "_C " << _C(k, n) << endl;
 }
 
-void lab_3_2(MyArray array, int k) {
+void lab_3_2(MyArray array, int k, bool reverse) {
     for (int i=1; i<factorial(k); i++) {
-        GenComb(array, k);
+        GenComb(array, k, reverse);
         cout << i+1 << ". ";
         array.show();
     }
 }
 
-void lab_3_3(MyArray array, int k, int n) {
+void lab_3_3(MyArray array, int k, int n, bool reverse) {
     for (int i=1; i<C(k, n); i++) {
-        GenPerm(array, k, n);
+        GenPerm(array, k, n, reverse);
         cout << i+1 << ". ";
         array.show();
     }
@@ -30,19 +30,25 @@ void lab_3_3(MyArray array, int k, int n) {
 
 int main() {
     int k = 4;
-    mytype n = 6;
+    int n = 6;
+    bool reverse = true;
 
     mytype items[k] = {};
-    for (mytype i = 0; i<k; i++) {
-        items[i] = i+1;
+    for (mytype i=0; i<k; i++) {
+        if (reverse) {
+            items[i] = n-i;
+        } else {
+            items[i] = i+1;
+        }
     }
+
     MyArray array(items, k);
     cout << 1 << ". ";
     array.show();
 
     //lab_3_1(k, n);
-    lab_3_2(array, k);
-    //lab_3_3(array, k, n);
+    lab_3_2(array, k, reverse);
+    //lab_3_3(array, k, n, reverse);
     
     return 0;
 }
