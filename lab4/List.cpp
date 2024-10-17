@@ -3,12 +3,21 @@
 
 Node *headstack, *first, *last;
 
-
-void pushstack(datatype item) {
-    Node *temp = new Node;
+void pushstack(int item) {
+    Node* temp = new Node;
     temp->key = item;
-    temp->next = headstack;
-    headstack = temp;
+    if (headstack == nullptr) {
+        temp->next = temp;  
+        headstack = temp;
+    } else {
+        Node* last = headstack;
+        while (last->next != headstack) {
+            last = last->next;
+        }
+        temp->next = headstack;
+        last->next = temp;
+        headstack = temp;
+    }
 }
 
 void popstack() {
@@ -16,16 +25,59 @@ void popstack() {
         std::cout << "Error: Stack is empty" << std::endl;
         return;
     }
-    headstack = headstack->next;
+    if (headstack->next == headstack) {
+        delete headstack;
+        headstack = NULL;
+    } else {
+        Node* last = headstack;
+        while (last->next != headstack) {
+            last = last->next;
+        }
+        Node* temp = headstack;
+        headstack = headstack->next;
+        last->next = headstack;
+        delete temp;
+    }
 }
 
 void showstack() {
+    if (headstack == NULL) {
+        std::cout << "Stack is empty" << std::endl;
+        return;
+    }
+    Node* temp = headstack;
+    std::cout << "Stack: ";
+    do {
+        std::cout << temp->key << " ";
+        temp = temp->next;
+    } while (temp != headstack);
+    std::cout << std::endl;
+}
+
+
+void pushstack1(datatype item) {
+    Node *temp = new Node;
+    temp->key = item;
+    temp->next = headstack;
+    
+    headstack = temp;
+}
+
+void popstack1() {
+    if (headstack == NULL) {
+        std::cout << "Error: Stack is empty" << std::endl;
+        return;
+    }
+    headstack = headstack->next;
+}
+
+void showstack1() {
     Node *temp = new Node;
     temp = headstack;
     std::cout << "Stack: ";
     while (temp != NULL) {
         std::cout << temp->key << " ";
-        temp = temp->next;        
+        temp = temp->next;    
     }
     std::cout << std::endl;
     delete temp;
