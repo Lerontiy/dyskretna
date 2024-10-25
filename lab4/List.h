@@ -1,4 +1,9 @@
-typedef int datatype; 
+#include <iostream>
+
+#ifndef Included_List_H
+#define Included_List_H
+
+typedef char datatype; 
 
 struct Node
 {
@@ -21,6 +26,12 @@ void add_mid(datatype find, datatype item);
 void del_mid(datatype find);
 void showqueue();
 
+void add_to_string(std::string &str);
+void get_stack_el(std::string &res);
+
+extern Node *headstack, *first, *last; // declaration
+
+#endif // Included_List_H 
 
 
 

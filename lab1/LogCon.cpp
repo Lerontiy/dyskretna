@@ -97,7 +97,6 @@ void variant8() {
     string var_num = "8";
 
     int sizeofheader = sizeof(header) / sizeof(header[0]);
-
     solve_variant(header, sizeofheader, funcs, var_num);
 }
 

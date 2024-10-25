@@ -1,61 +1,61 @@
 #include <iostream>
 #include "List.h"
 
-Node *headstack, *first, *last;
+Node *headstack, *first, *last; // declaration
 
-void pushstack(int item) {
-    Node* temp = new Node;
-    temp->key = item;
-    if (headstack == nullptr) {
-        temp->next = temp;  
-        headstack = temp;
-    } else {
-        Node* last = headstack;
-        while (last->next != headstack) {
-            last = last->next;
-        }
-        temp->next = headstack;
-        last->next = temp;
-        headstack = temp;
-    }
-}
+//void pushstack(datatype item) {
+//    Node* temp = new Node;
+//    temp->key = item;
+//    if (headstack == nullptr) {
+//        temp->next = temp;  
+//        headstack = temp;
+//    } else {
+//        Node* last = headstack;
+//        while (last->next != headstack) {
+//            last = last->next;
+//        }
+//        temp->next = headstack;
+//        last->next = temp;
+//        headstack = temp;
+//    }
+//}
+//
+//void popstack() {
+//    if (headstack == NULL) {
+//        std::cout << "Error: Stack is empty" << std::endl;
+//        return;
+//    }
+//    if (headstack->next == headstack) {
+//        delete headstack;
+//        headstack = NULL;
+//    } else {
+//        Node* last = headstack;
+//        while (last->next != headstack) {
+//            last = last->next;
+//        }
+//        Node* temp = headstack;
+//        headstack = headstack->next;
+//        last->next = headstack;
+//        delete temp;
+//    }
+//}
+//
+//void showstack() {
+//    if (headstack == NULL) {
+//        std::cout << "Stack is empty" << std::endl;
+//        return;
+//    }
+//    Node* temp = headstack;
+//    std::cout << "Stack: ";
+//    do {
+//        std::cout << temp->key << " ";
+//        temp = temp->next;
+//    } while (temp != headstack);
+//    std::cout << std::endl;
+//}
 
-void popstack() {
-    if (headstack == NULL) {
-        std::cout << "Error: Stack is empty" << std::endl;
-        return;
-    }
-    if (headstack->next == headstack) {
-        delete headstack;
-        headstack = NULL;
-    } else {
-        Node* last = headstack;
-        while (last->next != headstack) {
-            last = last->next;
-        }
-        Node* temp = headstack;
-        headstack = headstack->next;
-        last->next = headstack;
-        delete temp;
-    }
-}
 
-void showstack() {
-    if (headstack == NULL) {
-        std::cout << "Stack is empty" << std::endl;
-        return;
-    }
-    Node* temp = headstack;
-    std::cout << "Stack: ";
-    do {
-        std::cout << temp->key << " ";
-        temp = temp->next;
-    } while (temp != headstack);
-    std::cout << std::endl;
-}
-
-
-void pushstack1(datatype item) {
+void pushstack(datatype item) {
     Node *temp = new Node;
     temp->key = item;
     temp->next = headstack;
@@ -63,7 +63,7 @@ void pushstack1(datatype item) {
     headstack = temp;
 }
 
-void popstack1() {
+void popstack() {
     if (headstack == NULL) {
         std::cout << "Error: Stack is empty" << std::endl;
         return;
@@ -71,7 +71,7 @@ void popstack1() {
     headstack = headstack->next;
 }
 
-void showstack1() {
+void showstack() {
     Node *temp = new Node;
     temp = headstack;
     std::cout << "Stack: ";
@@ -187,6 +187,7 @@ void showqueue() {
 }
 
 void clear() {
+    headstack = NULL;
     first = NULL;
     last = NULL;
 }
@@ -201,5 +202,22 @@ Node* search(datatype item) {
     }
 }
 
+void add_to_string(std::string &str) {
+    if (headstack!=NULL) {
+        str += headstack->key;
+        headstack = headstack->next;
+    }
+}
 
+void get_stack_el(std::string &res) {
+    if (headstack!=NULL) {
+        datatype k = headstack->key;
+
+        if (k=='(') {
+
+        } else {
+            res = headstack->key;
+        }
+    }
+}
 
